@@ -27,6 +27,11 @@ router.route('/departure').get((req, res) => {
     })
 })
 
+router.route('/').get((req, res) => {
+    res.json({"Name" : "RedNguyen"});
+})
+
+
 
 var port = process.env.PORT || 8090;
 app.listen(port);
