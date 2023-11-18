@@ -5,7 +5,7 @@ async function getArrivalGuests(){
     try{
         let pool = await sql.connect(config);
         let results = await pool.request().query(
-        "select  a.LastName Name, a.MailM as Email, CONVERT(DATE, a.ArrivalDate) as Date from folio a join ActiveFolio b on a.FolioNum = b.FolioNum where convert(date, a.ArrivalDate) = CAST(GETDATE() AS DATE)"
+        "select  a.LastName Name, a.MailM as Email from folio a join ActiveFolio b on a.FolioNum = b.FolioNum where convert(date, a.ArrivalDate) = CAST(GETDATE() AS DATE)"
         );
         return results.recordsets;
     }
@@ -18,7 +18,7 @@ async function getDepartureGuests(){
     try{
         let pool = await sql.connect(config);
         let results = await pool.request().query(
-        "select  a.LastName Name, a.MailM as Email, CONVERT(DATE, a.DepartureDate) as Date from folio a join ActiveFolio b on a.FolioNum = b.FolioNum where convert(date, a.DepartureDate) = CAST(GETDATE() AS DATE)"
+        "select  a.LastName Name, a.MailM as Email from folio a join ActiveFolio b on a.FolioNum = b.FolioNum where convert(date, a.DepartureDate) = CAST(GETDATE() AS DATE)"
         );
         return results.recordsets;
     }
