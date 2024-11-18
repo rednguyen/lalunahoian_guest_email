@@ -10,9 +10,9 @@ var app = express();
 var router = express.Router();
 var data = [];
 var dataBooking = [];
-var fileName = today.getDate() + "-" + (today.getMonth()+1) + "-" + today.getFullYear() + "_lalunahoian_trip.csv";
-var fileNameBooking = today.getDate() + "-" + (today.getMonth()+1) + "-" + today.getFullYear() + "_lalunahoian_booking.csv";
-var fileNameAgoda = today.getDate() + "-" + (today.getMonth()+1) + "-" + today.getFullYear() + "_lalunahoian_agoda.csv";
+var fileName = "lalunahoian_trip.csv";
+var fileNameBooking = "lalunahoian_booking.csv";
+var fileNameAgoda = "lalunahoian_agoda.csv";
 const fastcsv = require("fast-csv");
 const fs = require("fs");
 
@@ -32,8 +32,6 @@ app.listen((port), () => {
         ws = fs.createWriteStream(fileName);
         console.log("Generating file: " + fileName);
         data = result[0];
-        data.push({Name: 'Red Nguyen', Email: 'rednguyen1997@gmail.com'});
-        data.push({Name: 'Nancy Ha', Email: 'thaonguyen010295@gmail.com'});
         console.log(data);
         const jsonData = JSON.parse(JSON.stringify(data));
 
@@ -46,8 +44,6 @@ app.listen((port), () => {
         wsBooking = fs.createWriteStream(fileNameBooking);
         console.log("Generating file: " + fileNameBooking);
         dataBooking  = result[0];
-        dataBooking.push({Name: 'Red Nguyen', Email: 'rednguyen1997@gmail.com'});
-        dataBooking.push({Name: 'Nancy Ha', Email: 'thaonguyen010295@gmail.com'});
         console.log(dataBooking);
         const jsonData = JSON.parse(JSON.stringify(dataBooking));
 
@@ -60,8 +56,6 @@ app.listen((port), () => {
         wsAgoda = fs.createWriteStream(fileNameAgoda);
         console.log("Generating file: " + fileNameAgoda);
         dataAgoda  = result[0];
-        dataAgoda.push({Name: 'Red Nguyen', Email: 'rednguyen1997@gmail.com'});
-        dataAgoda.push({Name: 'Nancy Ha', Email: 'thaonguyen010295@gmail.com'});
         console.log(dataAgoda);
         const jsonData = JSON.parse(JSON.stringify(dataAgoda));
 
